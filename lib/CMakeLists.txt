@@ -12,6 +12,7 @@
 include(GrPlatform) #define LIB_SUFFIX
 
 list(APPEND fastsrc_sources
+    lfm_chirp_impl.cc
 )
 
 set(fastsrc_sources "${fastsrc_sources}" PARENT_SCOPE)

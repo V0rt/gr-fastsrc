@@ -39,3 +39,4 @@ add_custom_target(
   COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_CURRENT_SOURCE_DIR}
           ${PROJECT_BINARY_DIR}/test_modules/gnuradio/fastsrc/
 )
+GR_ADD_TEST(qa_lfm_chirp ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/qa_lfm_chirp.py)

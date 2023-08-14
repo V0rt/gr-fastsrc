@@ -1,0 +1,28 @@
+id: fastsrc_lfm_chirp
+label: lfm chirp
+category: '[Fastsrc]'
+templates:
+  imports: from gnuradio import fastsrc
+  make: fastsrc.lfm_chirp(${samp_rate}, ${freq_deviation}, ${freq_offset}, ${period})
+parameters:
+- id: samp_rate
+  label: Samp_rate
+  default: 1
+  dtype: float
+- id: freq_deviation
+  label: Freq_deviation
+  default: 1
+  dtype: float
+- id: freq_offset
+  label: Freq_offset
+  default: 0
+  dtype: float
+- id: period
+  label: Period
+  default: 1
+  dtype: float
+outputs:
+- label: out
+  domain: stream
+  dtype: complex
+file_format: 1

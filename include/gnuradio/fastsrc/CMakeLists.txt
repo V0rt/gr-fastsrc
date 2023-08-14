@@ -11,5 +11,5 @@
 ########################################################################
 install(FILES
     api.h
-    DESTINATION include/gnuradio/fastsrc
+    lfm_chirp.h DESTINATION include/gnuradio/fastsrc
 )

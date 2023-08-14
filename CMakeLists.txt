@@ -10,6 +10,7 @@
 # This has to come before project() which otherwise initializes it.
 # Build type can still be overridden by setting -DCMAKE_BUILD_TYPE=
 set(CMAKE_BUILD_TYPE "Release" CACHE STRING "")
+set(CMAKE_INSTALL_PREFIX /home/user/miniconda3/envs/gnuradio)
 
 ########################################################################
 # Project setup
@@ -27,7 +28,10 @@ endif()
 # Make sure our local CMake Modules path comes first
 list(INSERT CMAKE_MODULE_PATH 0 ${PROJECT_SOURCE_DIR}/cmake/Modules)
 # Find gnuradio to get access to the cmake modules
-find_package(Gnuradio "3.10" REQUIRED)
+
+find_package(Gnuradio "3.10" REQUIRED COMPONENTS blocks analog filter fft)
+
+
 
 # Set the version information here
 # cmake-format: off

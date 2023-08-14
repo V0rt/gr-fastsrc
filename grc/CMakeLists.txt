@@ -7,5 +7,5 @@
 #
 
 install(FILES
-    DESTINATION share/gnuradio/grc/blocks
+    fastsrc_lfm_chirp.block.yml DESTINATION share/gnuradio/grc/blocks
 )

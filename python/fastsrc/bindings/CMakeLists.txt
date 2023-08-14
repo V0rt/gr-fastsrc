@@ -29,7 +29,7 @@ include(GrPybind)
 ########################################################################
 
 list(APPEND fastsrc_python_files
-    python_bindings.cc)
+    lfm_chirp_python.cc python_bindings.cc)
 
 GR_PYBIND_MAKE_OOT(fastsrc
    ../../..
