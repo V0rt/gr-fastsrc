@@ -38,7 +38,6 @@ lfm_chirp_impl::lfm_chirp_impl(float d_samp_rate,
       period(d_period)
 {
     num_samples = period * samp_rate;
-    frequency = 1 / period / samp_rate;
     freq_deviation = freq_deviation / samp_rate;
     freq_offset = freq_offset / samp_rate;
 
@@ -52,7 +51,8 @@ lfm_chirp_impl::lfm_chirp_impl(float d_samp_rate,
     for (int i = 0; i < num_samples; i++) {
         temp[i] = exp(gr_complex(0,
                                  2 * M_PI *
-                                     ((freq_offset - freq_deviation / 2) * i + freq_deviation * i * i / 2 / (float)num_samples)));
+                                     ((freq_offset - freq_deviation / 2) * i +
+                                      freq_deviation * i * i / 2 / (float)num_samples)));
     }
 
     while (samples.size() < num_samples + 4096) {
@@ -79,6 +79,51 @@ int lfm_chirp_impl::work(int noutput_items,
     ptr = (ptr + noutput_items) % num_samples;
 
     return noutput_items;
+}
+
+
+void lfm_chirp_impl::set_samp_rate(float sr)
+{
+    cout << __PRETTY_FUNCTION__ << "__NOT_IMPLEMENTED__" << endl;
+}
+
+void lfm_chirp_impl::set_period(float p)
+{
+    cout << __PRETTY_FUNCTION__ << endl;
+    num_samples = period * samp_rate;
+    update_signal();
+}
+
+void lfm_chirp_impl::set_freq_dev(float fd)
+{
+    cout << __PRETTY_FUNCTION__ << endl;
+    freq_deviation = fd / samp_rate;
+    update_signal();
+}
+
+void lfm_chirp_impl::set_freq_offset(float ofst)
+{
+    cout << __PRETTY_FUNCTION__ << endl;
+    freq_offset = ofst / samp_rate;
+    update_signal();
+}
+
+void lfm_chirp_impl::update_signal()
+{
+    cout << __PRETTY_FUNCTION__ << endl;
+    samples.clear();
+    vector<gr_complex> temp(num_samples);
+
+    for (int i = 0; i < num_samples; i++) {
+        temp[i] = exp(gr_complex(0,
+                                 2 * M_PI *
+                                     ((freq_offset - freq_deviation / 2) * i +
+                                      freq_deviation * i * i / 2 / (float)num_samples)));
+    }
+    while (samples.size() < period + 4096) {
+        samples.insert(samples.end(), temp.begin(), temp.end());
+    }
+    ptr = 0;
 }
 
 } /* namespace fastsrc */

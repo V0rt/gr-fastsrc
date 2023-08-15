@@ -36,6 +36,12 @@ public:
                      float freq_deviation = 1,
                      float freq_offset = 0,
                      float period = 1);
+
+    virtual void set_samp_rate(float samp_rate) = 0;
+    virtual void set_period(float period) = 0;
+    virtual void set_freq_dev(float fd) = 0;
+    virtual void set_freq_offset(float ofst) = 0;
+
 };
 
 } // namespace fastsrc

@@ -4,6 +4,11 @@ category: '[Fastsrc]'
 templates:
   imports: from gnuradio import fastsrc
   make: fastsrc.lfm_chirp(${samp_rate}, ${freq_deviation}, ${freq_offset}, ${period})
+  callbacks:
+  - set_samp_rate(${samp_rate})
+  - set_period(${period})
+  - set_freq_dev(${freq_deviation})
+  - set_freq_offset(${freq_offset})
 parameters:
 - id: samp_rate
   label: Samp_rate

@@ -15,13 +15,7 @@
  */
 
 
-
- static const char *__doc_gr_fastsrc_lfm_chirp = R"doc()doc";
-
-
- static const char *__doc_gr_fastsrc_lfm_chirp_lfm_chirp = R"doc()doc";
+static const char* __doc_gr_fastsrc_lfm_chirp = R"doc()doc";
 
 
- static const char *__doc_gr_fastsrc_lfm_chirp_make = R"doc()doc";
-
-  
+static const char* __doc_gr_fastsrc_lfm_chirp_make = R"doc()doc";

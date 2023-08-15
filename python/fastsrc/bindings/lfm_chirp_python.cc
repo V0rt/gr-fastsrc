@@ -14,7 +14,7 @@
 /* BINDTOOL_GEN_AUTOMATIC(0)                                                       */
 /* BINDTOOL_USE_PYGCCXML(0)                                                        */
 /* BINDTOOL_HEADER_FILE(lfm_chirp.h)                                        */
-/* BINDTOOL_HEADER_FILE_HASH(2d985214b6695ec3ce1974b9da793c95)                     */
+/* BINDTOOL_HEADER_FILE_HASH(27c1e4495502b351f76fc22a26675365)                     */
 /***********************************************************************************/
 
 #include <pybind11/complex.h>
@@ -30,30 +30,19 @@ namespace py = pybind11;
 void bind_lfm_chirp(py::module& m)
 {
 
-    using lfm_chirp    = gr::fastsrc::lfm_chirp;
+    using lfm_chirp = gr::fastsrc::lfm_chirp;
 
 
-    py::class_<lfm_chirp, gr::sync_block, gr::block, gr::basic_block,
-        std::shared_ptr<lfm_chirp>>(m, "lfm_chirp", D(lfm_chirp))
+    py::class_<lfm_chirp, gr::block, gr::basic_block, std::shared_ptr<lfm_chirp>>(
+        m, "lfm_chirp", D(lfm_chirp))
 
         .def(py::init(&lfm_chirp::make),
-           D(lfm_chirp,make)
-        )
-        
-
+             py::arg("samp_rate") = 1,
+             py::arg("freq_deviation") = 1,
+             py::arg("freq_offset") = 0,
+             py::arg("period") = 1,
+             D(lfm_chirp, make))
 
 
         ;
-
-
-
-
 }
-
-
-
-
-
-
-
-
